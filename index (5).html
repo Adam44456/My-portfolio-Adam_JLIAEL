@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  index.html — Structure HTML du portfolio
+  Adam Jlaiel — BUT R&T Cybersécurité — IUT Villetaneuse
+
+  Auteur  : Adam Jlaiel
+  Version : 1.0
+
+  Fichiers associés :
+    - styles.css  → tous les styles visuels
+    - lang.js     → gestion du bilinguisme FR / EN
+    - main.js     → animations, ticker, navigation active
+
+  Principe du bilinguisme :
+    Chaque texte existe en deux versions dans le HTML :
+      <span data-lang="fr">Texte français</span>
+      <span data-lang="en">English text</span>
+    Le fichier lang.js affiche l'une et masque l'autre
+    selon la langue active.
+  ============================================================
+-->
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Titre de la page -->
+  <title>Adam Jlaiel — Portfolio BUT R&T Cybersécurité</title>
+
+  <!-- Description pour les moteurs de recherche -->
+  <meta name="description" content="Portfolio d'Adam Jlaiel, étudiant BUT Réseaux & Télécommunications spécialité Cybersécurité à l'IUT Villetaneuse. Disponible en alternance à partir de septembre 2026." />
+
+  <!-- Polices Google Fonts :
+       - Bebas Neue  : titres display (grands titres)
+       - DM Serif Display : textes éditoriaux (citations)
+       - DM Sans     : texte courant (corps, navigation) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Feuille de styles principale -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       NAVIGATION — Barre fixe en haut de page
+       Contient : logo, liens de section, bouton de langue
+  ═══════════════════════════════════════════ -->
+  <nav>
+
+    <!-- Logo / retour en haut -->
+    <a class="nav-logo" href="#hero">ADAM<em>.</em>JLAIEL</a>
+
+    <!-- Liens vers les sections de la page -->
+    <ul class="nav-links">
+      <li><a href="#about">
+        <span data-lang="fr">À propos</span>
+        <span data-lang="en">About</span>
+      </a></li>
+      <li><a href="#experience">
+        <span data-lang="fr">Expérience</span>
+        <span data-lang="en">Experience</span>
+      </a></li>
+      <li><a href="#projects">
+        <span data-lang="fr">Projets</span>
+        <span data-lang="en">Projects</span>
+      </a></li>
+      <li><a href="#documents">
+        <span data-lang="fr">Documents</span>
+        <span data-lang="en">Documents</span>
+      </a></li>
+      <li><a href="#skills">
+        <span data-lang="fr">Compétences</span>
+        <span data-lang="en">Skills</span>
+      </a></li>
+      <li><a href="#contact">
+        <span data-lang="fr">Contact</span>
+        <span data-lang="en">Contact</span>
+      </a></li>
+    </ul>
+
+    <!-- Bouton de switch de langue — appelle toggleLang() dans lang.js -->
+    <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
+
+  </nav><!-- fin nav -->
+
+
+  <!-- ═══════════════════════════════════════════
+       SECTION HERO — Première section pleine hauteur
+       Contient : nom, titre, description, boutons, photo
+  ═══════════════════════════════════════════ -->
+  <section id="hero">
+
+    <!-- Colonne gauche : texte de présentation -->
+    <div class="hero-left">
+
+      <!-- Ligne d'accroche au-dessus du nom -->
+      <div class="hero-eyebrow">
+        <span data-lang="fr">Disponible · Alternance Sept. 2026</span>
+        <span data-lang="en">Available · Work-study Sept. 2026</span>
+      </div>
+
+      <!-- Nom en très grand — "JLAIEL" en texte outline (classe .stroke) -->
+      <h1 class="hero-name">
+        ADAM<br>
+        <span class="stroke">JLAIEL</span>
+      </h1>
+
+      <!-- Sous-titre en serif italique -->
+      <p class="hero-tagline">
+        <span data-lang="fr">Étudiant BUT R&T · <strong>Parcours Cybersécurité</strong></span>
+        <span data-lang="en">BUT R&T Student · <strong>Cybersecurity Track</strong></span>
+      </p>
+
+      <!-- Description courte -->
+      <p class="hero-desc">
+        <span data-lang="fr">En 2ᵉ année à l'IUT Villetaneuse, je conçois des infrastructures réseau sécurisées, réalise des tests d'intrusion et développe des applications web. Certifié SecNumacadémie ANSSI. À la recherche d'une alternance administrateur réseaux / cybersécurité à partir de septembre 2026.</span>
+        <span data-lang="en">2nd year at IUT Villetaneuse. I design secure network infrastructures, conduct penetration tests, and build web applications. SecNumacadémie ANSSI certified. Looking for a network admin / cybersecurity apprenticeship starting September 2026.</span>
+      </p>
+
+      <!-- Boutons d'action principaux -->
+      <div class="hero-actions">
+        <a href="docs/CV-Adam_Jlaiel.pdf" target="_blank" class="btn-main">
+          <span data-lang="fr">↓ Télécharger CV</span>
+          <span data-lang="en">↓ Download Resume</span>
+        </a>
+        <a href="#contact" class="btn-outline">
+          <span data-lang="fr">Me contacter</span>
+          <span data-lang="en">Get in touch</span>
+        </a>
+      </div>
+
+    </div><!-- fin hero-left -->
+
+
+    <!-- Colonne droite : photo + statistiques rapides -->
+    <div class="hero-right">
+
+      <!-- Cadre photo avec légende colorée -->
+      <div class="hero-photo-frame">
+        <img
+          src="image/adam.jpg"
+          alt="Adam Jlaiel — Étudiant BUT R&T Cybersécurité"
+          onerror="this.parentElement.style.background='#e8e0d0'"
+        />
+        <div class="hero-photo-caption">
+          <span>ADAM JLAIEL</span>
+          <span data-lang="fr">BUT R&T · CYBER</span>
+          <span data-lang="en">BUT R&T · CYBER</span>
+        </div>
+      </div>
+
+      <!-- 4 statistiques clés en grille 2×2 -->
+      <div class="hero-stats-strip">
+
+        <div class="stat-box">
+          <div class="num">2ème</div>
+          <div class="lbl" data-lang="fr">Année BUT</div>
+          <div class="lbl" data-lang="en">Year BUT</div>
+        </div>
+
+        <div class="stat-box">
+          <div class="num">3+</div>
+          <div class="lbl" data-lang="fr">Projets</div>
+          <div class="lbl" data-lang="en">Projects</div>
+        </div>
+
+        <div class="stat-box">
+          <div class="num">94%</div>
+          <!-- Pas de traduction nécessaire, identique en FR et EN -->
+          <div class="lbl">SecNum Max</div>
+        </div>
+
+        <!-- Stat orange = disponibilité (mise en valeur) -->
+        <div class="stat-box stat-box--highlight">
+          <div class="num stat-num--white">Open</div>
+          <div class="lbl stat-lbl--white" data-lang="fr">Alternance</div>
+          <div class="lbl stat-lbl--white" data-lang="en">Available</div>
+        </div>
+
+      </div><!-- fin hero-stats-strip -->
+
+    </div><!-- fin hero-right -->
+
+  </section><!-- fin #hero -->
+
+
+  <!-- ═══════════════════════════════════════════
+       TICKER DÉFILANT
+       Bande orange avec mots-clés animés.
+       Le contenu est généré dynamiquement par main.js
+  ═══════════════════════════════════════════ -->
+  <div class="ticker-wrap">
+    <div class="ticker" id="tickerInner">
+      <!-- Contenu injecté par buildTicker() dans main.js -->
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 01 — À PROPOS
+       Présentation personnelle + tableau d'infos
+  ═══════════════════════════════════════════ -->
+  <section id="about">
+    <div class="section-wrap">
+
+      <!-- Label de section -->
+      <div class="section-label">
+        <span data-lang="fr">01 · À propos</span>
+        <span data-lang="en">01 · About</span>
+      </div>
+
+      <!-- Grand titre avec mot en outline -->
+      <h2 class="section-title">
+        <span data-lang="fr">QUI <span class="ghost">SUIS-JE</span></span>
+        <span data-lang="en">WHO <span class="ghost">AM I</span></span>
+      </h2>
+
+      <div class="about-layout">
+
+        <!-- Texte de présentation + citation -->
+        <div class="about-text">
+
+          <p data-lang="fr">Je m'appelle <strong>Adam Jlaiel</strong>, j'ai 20 ans et je suis passionné d'informatique, de cybersécurité et de moto. Je prépare mon <strong>BUT Réseaux & Télécommunications</strong> spécialité <strong>Cybersécurité</strong> à l'IUT Villetaneuse, Université Sorbonne Paris Nord.</p>
+          <p data-lang="en">My name is <strong>Adam Jlaiel</strong>, I'm 20 years old, passionate about IT, cybersecurity, and motorcycles. I'm pursuing a <strong>BUT in Networking & Telecommunications</strong>, <strong>Cybersecurity track</strong>, at IUT Villetaneuse, Sorbonne Paris Nord University.</p>
+
+          <!-- Citation mise en avant (bloc .about-pull) -->
+          <div class="about-pull" data-lang="fr">"Concevoir des systèmes sécurisés, comprendre les attaques pour mieux défendre."</div>
+          <div class="about-pull" data-lang="en">"Designing secure systems, understanding attacks to better defend."</div>
+
+          <p data-lang="fr">J'ai réalisé un <strong>stage de 2 mois à l'AP-HP Hôpital Bichat</strong> où j'ai appliqué mes compétences réseau dans un environnement hospitalier critique. En parallèle, j'ai développé et livré une <strong>application web React</strong> pour Chicken Hermanos.</p>
+          <p data-lang="en">I completed a <strong>2-month internship at AP-HP Bichat Hospital</strong>, applying network skills in a critical healthcare environment. I also built and delivered a <strong>React web application</strong> for Chicken Hermanos.</p>
+
+        </div><!-- fin about-text -->
+
+        <!-- Tableau des informations personnelles -->
+        <div>
+          <table class="info-table">
+            <tr>
+              <td><span data-lang="fr">Formation</span><span data-lang="en">Degree</span></td>
+              <td>BUT R&T – Cybersécurité</td>
+            </tr>
+            <tr>
+              <td><span data-lang="fr">École</span><span data-lang="en">School</span></td>
+              <td>IUT Villetaneuse · Sorbonne Paris Nord</td>
+            </tr>
+            <tr>
+              <td><span data-lang="fr">Année</span><span data-lang="en">Year</span></td>
+              <td>
+                <span class="pill" data-lang="fr">2ème année</span>
+                <span class="pill" data-lang="en">2nd year</span>
+              </td>
+            </tr>
+            <tr>
+              <td><span data-lang="fr">Localisation</span><span data-lang="en">Location</span></td>
+              <td>Stains, 93240 – Île-de-France</td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td><a href="mailto:adamjlaiel5@gmail.com" class="link-orange">adamjlaiel5@gmail.com</a></td>
+            </tr>
+            <tr>
+              <td>LinkedIn</td>
+              <td><a href="https://www.linkedin.com/in/adam-jlaiel" target="_blank" class="link-orange">linkedin.com/in/adam-jlaiel</a></td>
+            </tr>
+            <tr>
+              <td><span data-lang="fr">Langues</span><span data-lang="en">Languages</span></td>
+              <td>Français · English B1 · Español A2</td>
+            </tr>
+            <tr>
+              <td><span data-lang="fr">Disponible</span><span data-lang="en">Available</span></td>
+              <td><span class="pill">Sept. 2026</span></td>
+            </tr>
+          </table>
+        </div><!-- fin tableau -->
+
+      </div><!-- fin about-layout -->
+
+    </div><!-- fin section-wrap -->
+  </section><!-- fin #about -->
+
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 02 — EXPÉRIENCE & FORMATION
+       Grille 3×2 de cartes sur fond sombre
+  ═══════════════════════════════════════════ -->
+  <section id="experience">
+    <div class="section-wrap">
+
+      <div class="section-label">
+        <span data-lang="fr">02 · Expérience</span>
+        <span data-lang="en">02 · Experience</span>
+      </div>
+
+      <h2 class="section-title">
+        <span data-lang="fr">MON <span class="ghost">PARCOURS</span></span>
+        <span data-lang="en">MY <span class="ghost">JOURNEY</span></span>
+      </h2>
+
+      <div class="exp-grid">
+
+        <!-- Carte 1 : Formation actuelle -->
+        <div class="exp-card">
+          <div class="exp-year">2024 – <span data-lang="fr">Présent</span><span data-lang="en">Present</span></div>
+          <div class="exp-role" data-lang="fr">BUT R&T Cybersécurité</div>
+          <div class="exp-role" data-lang="en">BUT R&T Cybersecurity</div>
+          <div class="exp-org">IUT Villetaneuse · Sorbonne Paris Nord</div>
+          <div class="exp-desc">
+            <span data-lang="fr">Protocoles réseau, sécurité des SI, administration système, cryptographie. Projets SAE en conditions réelles.</span>
+            <span data-lang="en">Network protocols, IS security, system administration, cryptography. Real-world SAE projects.</span>
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">VLAN</span>
+            <span class="exp-tag">pfSense</span>
+            <span class="exp-tag">Pentest</span>
+            <span class="exp-tag">Python</span>
+          </div>
+          <div class="exp-num">01</div>
+        </div>
+
+        <!-- Carte 2 : Stage AP-HP -->
+        <div class="exp-card">
+          <div class="exp-year" data-lang="fr">2025 · 2 mois</div>
+          <div class="exp-year" data-lang="en">2025 · 2 months</div>
+          <div class="exp-role" data-lang="fr">Stagiaire IT</div>
+          <div class="exp-role" data-lang="en">IT Intern</div>
+          <div class="exp-org">AP-HP · Hôpital Bichat, Paris</div>
+          <div class="exp-desc">
+            <span data-lang="fr">Administration réseau et systèmes en environnement hospitalier critique. Sécurité des données médicales.</span>
+            <span data-lang="en">Network & system administration in critical hospital. Medical data security in regulated framework.</span>
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">Réseau</span>
+            <span class="exp-tag">Support IT</span>
+            <span class="exp-tag">Sécurité SI</span>
+          </div>
+          <div class="exp-num">02</div>
+        </div>
+
+        <!-- Carte 3 : Job étudiant -->
+        <div class="exp-card">
+          <div class="exp-year">Sept. 2025 – <span data-lang="fr">Présent</span><span data-lang="en">Present</span></div>
+          <div class="exp-role" data-lang="fr">Vendeur</div>
+          <div class="exp-role" data-lang="en">Sales Associate</div>
+          <div class="exp-org">SportDirect · Claye-Souilly</div>
+          <div class="exp-desc">
+            <span data-lang="fr">Accueil client, gestion des entrées/sorties, procédures internes.</span>
+            <span data-lang="en">Customer service, store access management, procedures.</span>
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">Communication</span>
+            <span class="exp-tag">Organisation</span>
+          </div>
+          <div class="exp-num">03</div>
+        </div>
+
+        <!-- Carte 4 : Stage CyberBase -->
+        <div class="exp-card">
+          <div class="exp-year">2022</div>
+          <div class="exp-role" data-lang="fr">CyberBase – Stage</div>
+          <div class="exp-role" data-lang="en">CyberBase – Internship</div>
+          <div class="exp-org">Saint-Denis</div>
+          <div class="exp-desc">
+            <span data-lang="fr">Installation matérielle/logicielle, réseau d'entreprise virtuel.</span>
+            <span data-lang="en">Hardware/software setup, virtual corporate network.</span>
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">Hardware</span>
+            <span class="exp-tag">VirtualBox</span>
+          </div>
+          <div class="exp-num">04</div>
+        </div>
+
+        <!-- Carte 5 : Baccalauréat -->
+        <div class="exp-card">
+          <div class="exp-year">2023 – 2024</div>
+          <div class="exp-role" data-lang="fr">Bac STI2D</div>
+          <div class="exp-role" data-lang="en">STI2D Baccalaureate</div>
+          <div class="exp-org" data-lang="fr">Lycée Jean-Baptiste de la Salle · Mention Assez Bien</div>
+          <div class="exp-org" data-lang="en">Lycée Jean-Baptiste de la Salle · Honorable Mention</div>
+          <div class="exp-desc">
+            <span data-lang="fr">Spécialité SIN — Systèmes d'Information et Numérique.</span>
+            <span data-lang="en">SIN — Digital Information Systems.</span>
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">SIN</span>
+            <span class="exp-tag">STI2D</span>
+          </div>
+          <div class="exp-num">05</div>
+        </div>
+
+        <!-- Carte 6 : Prochaine étape — mise en valeur avec bordure orange -->
+        <div class="exp-card exp-card--next">
+          <div class="exp-year exp-year--orange" data-lang="fr">Prochaine étape</div>
+          <div class="exp-year exp-year--orange" data-lang="en">Next step</div>
+          <div class="exp-role exp-role--light" data-lang="fr">Alternance</div>
+          <div class="exp-role exp-role--light" data-lang="en">Apprenticeship</div>
+          <div class="exp-org" data-lang="fr">À partir de septembre 2026</div>
+          <div class="exp-org" data-lang="en">Starting September 2026</div>
+          <div class="exp-desc exp-desc--dim" data-lang="fr">Administrateur réseaux / Cybersécurité — 3 sem. entreprise / 2 sem. école.</div>
+          <div class="exp-desc exp-desc--dim" data-lang="en">Network admin / Cybersecurity — 3 weeks company / 2 weeks school.</div>
+          <div class="exp-num exp-num--orange">→</div>
+        </div>
+
+      </div><!-- fin exp-grid -->
+
+    </div><!-- fin section-wrap -->
+  </section><!-- fin #experience -->
+
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 03 — PROJETS
+       Liste éditoriale avec numéros et téléchargements
+  ═══════════════════════════════════════════ -->
+  <section id="projects">
+    <div class="section-wrap">
+
+      <div class="section-label">
+        <span data-lang="fr">03 · Projets</span>
+        <span data-lang="en">03 · Projects</span>
+      </div>
+
+      <h2 class="section-title">
+        <span data-lang="fr">MES <span class="ghost">RÉALISATIONS</span></span>
+        <span data-lang="en">MY <span class="ghost">WORK</span></span>
+      </h2>
+
+      <div class="projects-layout">
+
+        <!-- Projet 01 : Pentest -->
+        <div class="project-row">
+          <div class="proj-index">01</div>
+          <div class="proj-main">
+            <div class="proj-cat">Pentest · SAE · Jan. 2026</div>
+            <div class="proj-name" data-lang="fr">Test d'intrusion — Metasploitable & Windows XP</div>
+            <div class="proj-name" data-lang="en">Penetration Testing — Metasploitable & Windows XP</div>
+            <div class="proj-desc">
+              <span data-lang="fr">Scan Nessus, exploitation Metasploit : VNC, Ghostcat CVE-2020-1938, MS08-067 RCE, Bind Shell. Shells root/SYSTEM, persistance et remédiation.</span>
+              <span data-lang="en">Nessus scan, Metasploit exploitation: VNC, Ghostcat, MS08-067 RCE, Bind Shell. Root/SYSTEM shells, persistence and remediation.</span>
+            </div>
+            <div class="proj-tags">
+              <span class="proj-tag">Nessus</span>
+              <span class="proj-tag">Metasploit</span>
+              <span class="proj-tag">MS08-067</span>
+              <span class="proj-tag">Ghostcat</span>
+              <span class="proj-tag">VirtualBox</span>
+            </div>
+          </div>
+          <div class="proj-right">
+            <div class="proj-year">2026</div>
+            <a href="docs/SAE_pentest.pdf" download class="proj-dl" data-lang="fr">↓ Rapport PDF</a>
+            <a href="docs/SAE_pentest.pdf" download class="proj-dl" data-lang="en">↓ PDF Report</a>
+            <a href="docs/Diapo_pentest.pptx" download class="proj-dl" data-lang="fr">↓ Diaporama</a>
+            <a href="docs/Diapo_pentest.pptx" download class="proj-dl" data-lang="en">↓ Slides</a>
+          </div>
+        </div>
+
+        <!-- Projet 02 : Stage AP-HP -->
+        <div class="project-row">
+          <div class="proj-index">02</div>
+          <div class="proj-main">
+            <div class="proj-cat" data-lang="fr">Stage · AP-HP · 2025</div>
+            <div class="proj-cat" data-lang="en">Internship · AP-HP · 2025</div>
+            <div class="proj-name" data-lang="fr">Stage IT — Hôpital Bichat</div>
+            <div class="proj-name" data-lang="en">IT Internship — Bichat Hospital</div>
+            <div class="proj-desc">
+              <span data-lang="fr">Administration réseau et systèmes en environnement hospitalier critique. Sécurité des données médicales dans un cadre réglementé.</span>
+              <span data-lang="en">Network & system administration in critical hospital. Medical data security in regulated framework.</span>
+            </div>
+            <div class="proj-tags">
+              <span class="proj-tag">Administration</span>
+              <span class="proj-tag">Réseau</span>
+              <span class="proj-tag">Sécurité SI</span>
+              <span class="proj-tag">AP-HP</span>
+            </div>
+          </div>
+          <div class="proj-right">
+            <div class="proj-year">2025</div>
+            <span class="proj-coming" data-lang="fr">Rapport à venir</span>
+            <span class="proj-coming" data-lang="en">Report coming</span>
+          </div>
+        </div>
+
+        <!-- Projet 03 : Chicken Hermanos -->
+        <div class="project-row">
+          <div class="proj-index">03</div>
+          <div class="proj-main">
+            <div class="proj-cat" data-lang="fr">Dev Web · Freelance · 2024</div>
+            <div class="proj-cat" data-lang="en">Web Dev · Freelance · 2024</div>
+            <div class="proj-name" data-lang="fr">App Gestion de Stock — Chicken Hermanos</div>
+            <div class="proj-name" data-lang="en">Stock Management App — Chicken Hermanos</div>
+            <div class="proj-desc">
+              <span data-lang="fr">React/Vite multi-restaurants (Stains, Clichy, Paris 15e). Alertes configurables, push via ntfy.sh, back-office admin. Déployée sur Vercel.</span>
+              <span data-lang="en">React/Vite for 3 restaurants. Configurable alerts, push via ntfy.sh, admin back-office. Deployed on Vercel.</span>
+            </div>
+            <div class="proj-tags">
+              <span class="proj-tag">React</span>
+              <span class="proj-tag">Vite</span>
+              <span class="proj-tag">Vercel</span>
+              <span class="proj-tag">ntfy.sh</span>
+              <span class="proj-tag">GitHub</span>
+            </div>
+          </div>
+          <div class="proj-right">
+            <div class="proj-year">2024</div>
+            <!-- Mention du montant facturé (identique FR/EN) -->
+            <span class="proj-delivered">✓ 500€</span>
+          </div>
+        </div>
+
+        <!-- Projet 04 : JurisNova -->
+        <div class="project-row">
+          <div class="proj-index">04</div>
+          <div class="proj-main">
+            <div class="proj-cat" data-lang="fr">SAE Réseau · Juin 2025</div>
+            <div class="proj-cat" data-lang="en">Network SAE · June 2025</div>
+            <div class="proj-name" data-lang="fr">Réseau Sécurisé — Cabinet JurisNova</div>
+            <div class="proj-name" data-lang="en">Secure Network — JurisNova Law Firm</div>
+            <div class="proj-desc">
+              <span data-lang="fr">4 VLANs (LAN, DMZ Web, DMZ BDD, Wi-Fi invité), pfSense, ACLs, GLPI, FusionInventory, Apache. Budget 17 360€ HT. Cisco Packet Tracer.</span>
+              <span data-lang="en">4 VLANs, pfSense, ACLs, GLPI, FusionInventory, Apache. 17,360€ budget. Cisco Packet Tracer simulation.</span>
+            </div>
+            <div class="proj-tags">
+              <span class="proj-tag">pfSense</span>
+              <span class="proj-tag">VLAN</span>
+              <span class="proj-tag">GLPI</span>
+              <span class="proj-tag">DMZ</span>
+              <span class="proj-tag">Packet Tracer</span>
+            </div>
+          </div>
+          <div class="proj-right">
+            <div class="proj-year">2025</div>
+            <a href="docs/SAE24_JurisNova.pdf" download class="proj-dl" data-lang="fr">↓ Rapport PDF</a>
+            <a href="docs/SAE24_JurisNova.pdf" download class="proj-dl" data-lang="en">↓ PDF Report</a>
+          </div>
+        </div>
+
+      </div><!-- fin projects-layout -->
+
+    </div><!-- fin section-wrap -->
+  </section><!-- fin #projects -->
+
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 04 — DOCUMENTS TÉLÉCHARGEABLES
+       Liste de tous les fichiers PDF / PPTX
+  ═══════════════════════════════════════════ -->
+  <section id="documents">
+    <div class="section-wrap">
+
+      <div class="section-label">
+        <span data-lang="fr">04 · Documents</span>
+        <span data-lang="en">04 · Documents</span>
+      </div>
+
+      <h2 class="section-title">
+        <span data-lang="fr">TOUT <span class="ghost">TÉLÉCHARGER</span></span>
+        <span data-lang="en">ALL <span class="ghost">DOWNLOADS</span></span>
+      </h2>
+
+      <div class="docs-list">
+
+        <!-- CV -->
+        <a href="docs/CV-Adam_Jlaiel.pdf" download class="doc-row">
+          <div class="doc-left">
+            <div class="doc-type">PDF</div>
+            <div>
+              <div class="doc-title" data-lang="fr">CV — Adam Jlaiel</div>
+              <div class="doc-title" data-lang="en">Resume — Adam Jlaiel</div>
+              <div class="doc-sub" data-lang="fr">Alternance administrateur réseaux / cybersécurité · Sept. 2026</div>
+              <div class="doc-sub" data-lang="en">Network admin / cybersecurity work-study · Sept. 2026</div>
+            </div>
+          </div>
+          <div class="doc-arrow">→</div>
+        </a>
+
+        <!-- Rapport Pentest -->
+        <a href="docs/SAE_pentest.pdf" download class="doc-row">
+          <div class="doc-left">
+            <div class="doc-type">PDF</div>
+            <div>
+              <div class="doc-title" data-lang="fr">Rapport Pentest — SAE</div>
+              <div class="doc-title" data-lang="en">Pentest Report — SAE</div>
+              <div class="doc-sub" data-lang="fr">Metasploitable 2 & Windows XP · Nessus / Metasploit · Jan. 2026</div>
+              <div class="doc-sub" data-lang="en">Metasploitable 2 & Windows XP · Nessus / Metasploit · Jan. 2026</div>
+            </div>
+          </div>
+          <div class="doc-arrow">→</div>
+        </a>
+
+        <!-- Diaporama Pentest -->
+        <a href="docs/Diapo_pentest.pptx" download class="doc-row">
+          <div class="doc-left">
+            <div class="doc-type">PPTX</div>
+            <div>
+              <div class="doc-title" data-lang="fr">Diaporama Pentest</div>
+              <div class="doc-title" data-lang="en">Pentest Slides</div>
+              <div class="doc-sub" data-lang="fr">Présentation test d'intrusion & exploitation</div>
+              <div class="doc-sub" data-lang="en">Intrusion testing & exploitation presentation</div>
+            </div>
+          </div>
+          <div class="doc-arrow">→</div>
+        </a>
+
+        <!-- Rapport JurisNova -->
+        <a href="docs/SAE24_JurisNova.pdf" download class="doc-row">
+          <div class="doc-left">
+            <div class="doc-type">PDF</div>
+            <div>
+              <div class="doc-title" data-lang="fr">Rapport SAE — Cabinet JurisNova</div>
+              <div class="doc-title" data-lang="en">SAE Report — JurisNova Law Firm</div>
+              <div class="doc-sub" data-lang="fr">Réseau sécurisé · pfSense · VLANs · GLPI · Juin 2025</div>
+              <div class="doc-sub" data-lang="en">Secure network · pfSense · VLANs · GLPI · June 2025</div>
+            </div>
+          </div>
+          <div class="doc-arrow">→</div>
+        </a>
+
+        <!-- Plan de réponse ASP -->
+        <a href="docs/SAE_plan_reponse.pdf" download class="doc-row">
+          <div class="doc-left">
+            <div class="doc-type">PDF</div>
+            <div>
+              <div class="doc-title" data-lang="fr">Plan de réponse — ASP</div>
+              <div class="doc-title" data-lang="en">Tender Response Plan — ASP</div>
+              <div class="doc-sub" data-lang="fr">Mission 1 · Marché MP24-16 · Jan. 2026</div>
+              <div class="doc-sub" data-lang="en">Mission 1 · Market MP24-16 · Jan. 2026</div>
+            </div>
+          </div>
+          <div class="doc-arrow">→</div>
+        </a>
+
+        <!-- Diaporama Plan ASP -->
+        <a href="docs/Diapo_plan_reponse.pdf" download class="doc-row">
+          <div class="doc-left">
+            <div class="doc-type">PDF</div>
+            <div>
+              <div class="doc-title" data-lang="fr">Diaporama — Plan réponse ASP</div>
+              <div class="doc-title" data-lang="en">Slides — ASP Tender Plan</div>
+              <div class="doc-sub" data-lang="fr">Présentation soutenance · Jan. 2026</div>
+              <div class="doc-sub" data-lang="en">Defense presentation · Jan. 2026</div>
+            </div>
+          </div>
+          <div class="doc-arrow">→</div>
+        </a>
+
+        <!-- Attestation SecNumacadémie -->
+        <a href="docs/SecNumacademie_ANSSI.pdf" download class="doc-row">
+          <div class="doc-left">
+            <div class="doc-type">PDF</div>
+            <div>
+              <div class="doc-title" data-lang="fr">Attestation SecNumacadémie — ANSSI</div>
+              <div class="doc-title" data-lang="en">SecNumacadémie Certificate — ANSSI</div>
+              <div class="doc-sub" data-lang="fr">4 modules · 82–94% · Déc. 2025</div>
+              <div class="doc-sub" data-lang="en">4 modules · 82–94% · Dec. 2025</div>
+            </div>
+          </div>
+          <div class="doc-arrow">→</div>
+        </a>
+
+      </div><!-- fin docs-list -->
+
+    </div><!-- fin section-wrap -->
+  </section><!-- fin #documents -->
+
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 05 — COMPÉTENCES
+       Barres de niveau + grille de certifications
+       Les barres sont animées par main.js via IntersectionObserver
+  ═══════════════════════════════════════════ -->
+  <section id="skills">
+    <div class="section-wrap">
+
+      <div class="section-label">
+        <span data-lang="fr">05 · Compétences</span>
+        <span data-lang="en">05 · Skills</span>
+      </div>
+
+      <h2 class="section-title">
+        <span data-lang="fr">MES <span class="ghost">OUTILS</span></span>
+        <span data-lang="en">MY <span class="ghost">TOOLS</span></span>
+      </h2>
+
+      <div class="skills-layout">
+
+        <!-- Colonne gauche : Sécurité + Réseaux -->
+        <div>
+
+          <div class="skill-group">
+            <div class="skill-group-title" data-lang="fr">🔒 Sécurité & Pentest</div>
+            <div class="skill-group-title" data-lang="en">🔒 Security & Pentest</div>
+
+            <!-- Chaque .skill-line est observée par main.js -->
+            <!-- data-width sera lu par le JS pour animer la barre -->
+            <div class="skill-line" data-width="85">
+              <span class="skill-name-txt">Nessus / Metasploit</span>
+              <div class="skill-track"><div class="skill-fill-line"></div></div>
+              <span class="skill-pct-txt">85</span>
+            </div>
+            <div class="skill-line" data-width="88">
+              <span class="skill-name-txt">pfSense / Firewall</span>
+              <div class="skill-track"><div class="skill-fill-line"></div></div>
+              <span class="skill-pct-txt">88</span>
+            </div>
+            <div class="skill-line" data-width="82">
+              <span class="skill-name-txt">Wireshark / nmap</span>
+              <div class="skill-track"><div class="skill-fill-line"></div></div>
+              <span class="skill-pct-txt">82</span>
+            </div>
+            <div class="skill-line" data-width="75">
+              <span class="skill-name-txt">TryHackMe / Root-Me</span>
+              <div class="skill-track"><div class="skill-fill-line"></div></div>
+              <span class="skill-pct-txt">75</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-title" data-lang="fr">🌐 Réseaux</div>
+            <div class="skill-group-title" data-lang="en">🌐 Networking</div>
+
+            <div class="skill-line" data-width="90">
+              <span class="skill-name-txt">VLAN / ACL / Trunk</span>
+              <div class="skill-track"><div class="skill-fill-line"></div></div>
+              <span class="skill-pct-txt">90</span>
+            </div>
+            <div class="skill-line" data-width="88">
+              <span class="skill-name-txt">TCP/IP · DHCP · DNS</span>
+              <div class="skill-track"><div class="skill-fill-line"></div></div>
+              <span class="skill-pct-txt">88</span>
+            </div>
+            <div class="skill-line" data-width="80">
+              <span class="skill-name-txt">SSH · TLS/SSL · VPN</span>
+              <div class="skill-track"><div class="skill-fill-line"></div></div>
+              <span class="skill-pct-txt">80</span>
+            </div>
+            <div class="skill-line" data-width="85">
+              <span class="skill-name-txt">Cisco Packet Tracer</span>
+              <div class="skill-track"><div class="skill-fill-line"></div></div>
+              <span class="skill-pct-txt">85</span>
+            </div>
+          </div>
+
+        </div><!-- fin colonne gauche -->
+
+        <!-- Colonne droite : Développement + Certifications -->
+        <div>
+
+          <div class="skill-group">
+            <div class="skill-group-title" data-lang="fr">💻 Développement</div>
+            <div class="skill-group-title" data-lang="en">💻 Development</div>
+
+            <div class="skill-line" data-width="78">
+              <span class="skill-name-txt">Python</span>
+              <div class="skill-track"><div class="skill-fill-line"></div></div>
+              <span class="skill-pct-txt">78</span>
+            </div>
+            <div class="skill-line" data-width="72">
+              <span class="skill-name-txt">React / Vite / JS</span>
+              <div class="skill-track"><div class="skill-fill-line"></div></div>
+              <span class="skill-pct-txt">72</span>
+            </div>
+            <div class="skill-line" data-width="80">
+              <span class="skill-name-txt">HTML / CSS</span>
+              <div class="skill-track"><div class="skill-fill-line"></div></div>
+              <span class="skill-pct-txt">80</span>
+            </div>
+            <div class="skill-line" data-width="68">
+              <span class="skill-name-txt">SQL / PostgreSQL</span>
+              <div class="skill-track"><div class="skill-fill-line"></div></div>
+              <span class="skill-pct-txt">68</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-title" data-lang="fr">🏅 Certifications</div>
+            <div class="skill-group-title" data-lang="en">🏅 Certifications</div>
+
+            <div class="certs-grid">
+              <div class="cert-box">
+                <div class="cert-icon-txt">🛡️</div>
+                <div class="cert-name">SecNumacadémie</div>
+                <div class="cert-detail">ANSSI · 82–94% · 2025</div>
+              </div>
+              <div class="cert-box">
+                <div class="cert-icon-txt">🎓</div>
+                <div class="cert-name">PIX</div>
+                <div class="cert-detail" data-lang="fr">Certification Numérique</div>
+                <div class="cert-detail" data-lang="en">Digital Certification</div>
+              </div>
+              <div class="cert-box">
+                <div class="cert-icon-txt">🚑</div>
+                <div class="cert-name">AFGSU niv.2</div>
+                <div class="cert-detail" data-lang="fr">Gestes d'urgence</div>
+                <div class="cert-detail" data-lang="en">Emergency care</div>
+              </div>
+              <div class="cert-box">
+                <div class="cert-icon-txt">🏍️</div>
+                <div class="cert-name" data-lang="fr">Permis B + Moto</div>
+                <div class="cert-name" data-lang="en">License B + Motorcycle</div>
+                <div class="cert-detail" data-lang="fr">Véhicule personnel</div>
+                <div class="cert-detail" data-lang="en">Personal vehicle</div>
+              </div>
+            </div>
+
+          </div><!-- fin certifications -->
+
+        </div><!-- fin colonne droite -->
+
+      </div><!-- fin skills-layout -->
+
+    </div><!-- fin section-wrap -->
+  </section><!-- fin #skills -->
+
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 06 — CONTACT
+       Fond sombre, infos de contact + formulaire
+  ═══════════════════════════════════════════ -->
+  <section id="contact">
+    <div class="section-wrap">
+
+      <div class="section-label">
+        <span data-lang="fr">06 · Contact</span>
+        <span data-lang="en">06 · Contact</span>
+      </div>
+
+      <h2 class="section-title">
+        <span data-lang="fr">TRAVAILLONS <span class="ghost">ENSEMBLE</span></span>
+        <span data-lang="en">LET'S <span class="ghost">CONNECT</span></span>
+      </h2>
+
+      <div class="contact-layout">
+
+        <!-- Colonne gauche : texte + coordonnées -->
+        <div class="contact-left">
+
+          <p data-lang="fr">Je suis à la recherche d'une <strong>alternance à partir de septembre 2026</strong> en administration réseau et cybersécurité — rythme 3 semaines entreprise / 2 semaines école.</p>
+          <p data-lang="en">I'm looking for a <strong>work-study position starting September 2026</strong> in network administration and cybersecurity — 3 weeks company / 2 weeks school.</p>
+
+          <div class="contact-items">
+
+            <div class="contact-item">
+              <span class="ci-icon">✉️</span>
+              <div>
+                <div class="ci-label">Email</div>
+                <div class="ci-val"><a href="mailto:adamjlaiel5@gmail.com">adamjlaiel5@gmail.com</a></div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <span class="ci-icon">📞</span>
+              <div>
+                <div class="ci-label" data-lang="fr">Téléphone</div>
+                <div class="ci-label" data-lang="en">Phone</div>
+                <div class="ci-val">07.62.73.18.97</div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <span class="ci-icon">📍</span>
+              <div>
+                <div class="ci-label" data-lang="fr">Localisation</div>
+                <div class="ci-label" data-lang="en">Location</div>
+                <div class="ci-val">Stains, 93240 – Île-de-France</div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <span class="ci-icon">💼</span>
+              <div>
+                <div class="ci-label">LinkedIn</div>
+                <div class="ci-val">
+                  <a href="https://www.linkedin.com/in/adam-jlaiel" target="_blank">linkedin.com/in/adam-jlaiel</a>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- fin contact-items -->
+
+        </div><!-- fin contact-left -->
+
+        <!-- Colonne droite : formulaire de contact -->
+        <!-- Note : le formulaire est purement visuel pour le portfolio,
+             aucun backend n'est connecté -->
+        <div class="contact-form">
+
+          <!-- Champ Nom -->
+          <div class="form-row">
+            <label class="form-lbl" data-lang="fr">Nom</label>
+            <label class="form-lbl" data-lang="en">Name</label>
+            <!-- id="ph-name" utilisé par lang.js pour changer le placeholder -->
+            <input class="form-ctrl" type="text" id="ph-name" placeholder="Jean Dupont" />
+          </div>
+
+          <!-- Champ Email -->
+          <div class="form-row">
+            <label class="form-lbl">Email</label>
+            <input class="form-ctrl" type="email" placeholder="john@company.com" />
+          </div>
+
+          <!-- Champ Entreprise -->
+          <div class="form-row">
+            <label class="form-lbl" data-lang="fr">Entreprise</label>
+            <label class="form-lbl" data-lang="en">Company</label>
+            <!-- id="ph-company" utilisé par lang.js -->
+            <input class="form-ctrl" type="text" id="ph-company" placeholder="Mon Entreprise" />
+          </div>
+
+          <!-- Champ Message -->
+          <div class="form-row">
+            <label class="form-lbl" data-lang="fr">Message</label>
+            <label class="form-lbl" data-lang="en">Message</label>
+            <!-- id="ph-msg" utilisé par lang.js -->
+            <textarea
+              class="form-ctrl"
+              id="ph-msg"
+              placeholder="Bonjour Adam, je souhaite vous proposer une alternance..."
+            ></textarea>
+          </div>
+
+          <!-- Bouton d'envoi -->
+          <button class="btn-send">
+            <span data-lang="fr">Envoyer →</span>
+            <span data-lang="en">Send →</span>
+          </button>
+
+        </div><!-- fin contact-form -->
+
+      </div><!-- fin contact-layout -->
+
+    </div><!-- fin section-wrap -->
+  </section><!-- fin #contact -->
+
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-left">ADAM<em>.</em>JLAIEL © 2025</div>
+    <div class="footer-right">
+      <a href="#hero" data-lang="fr">↑ Haut</a>
+      <a href="#hero" data-lang="en">↑ Top</a>
+      <a href="docs/CV-Adam_Jlaiel.pdf" target="_blank">CV</a>
+      <a href="https://www.linkedin.com/in/adam-jlaiel" target="_blank">LinkedIn</a>
+      <a href="mailto:adamjlaiel5@gmail.com">Email</a>
+    </div>
+  </footer><!-- fin footer -->
+
+
+  <!-- ═══════════════════════════════════════════
+       SCRIPTS JavaScript — chargés en fin de body
+       pour ne pas bloquer le rendu de la page
+  ═══════════════════════════════════════════ -->
+
+  <!-- Gestion du bilinguisme FR / EN -->
+  <script src="lang.js"></script>
+
+  <!-- Animations, ticker défilant, nav active -->
+  <script src="main.js"></script>
+
+</body>
+</html>
