@@ -1124,3 +1124,25 @@ footer {
   font-weight: 500;
   color:       var(--orange);
 }
+
+/* ─────────────────────────────────────────
+   17. CARTES CATÉGORIE (Formation / Expériences pro)
+   Séparateurs visuels dans la grille expérience
+───────────────────────────────────────── */
+
+/* Carte titre de catégorie — occupe toute la largeur */
+.exp-card--category {
+  grid-column:    1 / -1;      /* s'étend sur toutes les colonnes */
+  background:     transparent;
+  border:         none;
+  border-top:     2px solid var(--orange);
+  padding:        1rem 0 0.5rem;
+}
+
+/* Label de catégorie en grand */
+.exp-category-label {
+  font-family:    var(--bebas);
+  font-size:      1.4rem;
+  letter-spacing: 0.12em;
+  color:          var(--orange);
+}
